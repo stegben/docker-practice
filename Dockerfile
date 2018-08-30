@@ -1,3 +1,7 @@
-FROM python:3.5
-RUN pip install -U pip wheel cython flask==0.11.1
-RUN useradd -ms /bin/bash admin
+FROM python:3.6.6
+
+COPY . .
+RUN pip install pipenv
+RUN pipenv install --system
+
+CMD ["python", "server.py"]
